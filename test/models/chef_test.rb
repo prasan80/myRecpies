@@ -4,10 +4,10 @@ class ChefTest < ActiveSupport::TestCase
     
     def setup
     @chef = Chef.new(chefname: "john", email: "john@example.com")
-end
 
 test "chef should be valid"
 assert @chef.valid?
+end
 
 test "chefname should not be too short" do
     @chef.chefname = "aa"
@@ -28,9 +28,11 @@ end
 
 test "email address should be unique" do
     dup_chef = @chef.dup_chef
-    dupe_chef.email = @chef.email.upcase
+    dup_chef.email = @chef.email.upcase
     @chef.case
-    assert_not dup_chef.valud?
+    assert_not dup_chef.valid?
+end
+
 end
 
 
